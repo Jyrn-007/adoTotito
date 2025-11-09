@@ -146,6 +146,7 @@ button { padding:10px 12px; border-radius:10px; border:0; cursor:pointer; font-w
 
   .logo img {
     width: 48px;
+    padding: 8px;
   }
 
   .board {
