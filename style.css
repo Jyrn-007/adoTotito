@@ -1,79 +1,166 @@
-/* ----- Paleta ----- */
-:root{
+:root {
   --bg1:#0b0b12;
+  --bg2:#3b0066;
+  --glass: rgba(255,255,255,0.06);
   --accent:#9b6bff;
   --accent2:#3fe0ff;
+  --x-color:#ff6b6b;
+  --o-color:#6bd1ff;
+  --soft: 14px;
 }
 
-/* ----- Fondo ----- */
-body{
-  margin:0;
-  font-family:Inter, sans-serif;
+* { box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  color: #fff;
+}
+
+/* Fondo estilo dream pop */
+body {
   background:
-  linear-gradient(rgba(10,0,25,0.55), rgba(5,0,15,0.75)),
-  url("https://billboardphilippines.com/wp-content/uploads/2024/10/ADO-FTR-IMG-1600x838.jpg");
-  background-size:cover;
-  background-position:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height:100vh;
-  color:white;
+    linear-gradient(rgba(10,0,25,0.55), rgba(5,0,15,0.75)),
+    url("https://billboardphilippines.com/wp-content/uploads/2024/10/ADO-FTR-IMG-1600x838.jpg") center/cover no-repeat fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-/* ----- Contenedor ----- */
-.card{
-  width:95%;
-  max-width:800px;
-  background:rgba(255,255,255,0.06);
-  border-radius:22px;
-  padding:20px;
-  display:grid;
-  grid-template-columns:1fr 260px;
-  gap:18px;
-  backdrop-filter:blur(15px);
+/* Tarjeta contenedora */
+.card {
+  width: min(760px, 95%);
+  background: rgba(255,255,255,0.08);
+  border-radius: 22px;
+  padding: 24px;
+  backdrop-filter: blur(14px) saturate(160%);
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow:
+    0 0 40px rgba(155,107,255,0.25),
+    0 0 120px rgba(63,224,255,0.15),
+    0 10px 40px rgba(0,0,0,0.75);
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 22px;
+  animation: fadeIn .8s ease;
 }
 
-/* ----- Responsivo móvil ----- */
-@media(max-width:700px){
-  .card{
-    grid-template-columns:1fr;
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Encabezado */
+.header {
+  grid-column: 1/-1;
+  display: flex;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+/* LOGO RESPONSIVO */
+.logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.logo img {
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+  transition: transform .3s ease, filter .3s ease;
+}
+.logo img:hover {
+  transform: scale(1.06);
+  filter: brightness(1.2);
+}
+
+/* Jugabilidad */
+.play-area {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: center;
+}
+
+.board {
+  width: 340px;
+  height: 340px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.cell {
+  background: var(--glass);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .14s ease, box-shadow .14s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45);
+}
+
+.cell:hover { transform: scale(1.08); box-shadow: 0 0 22px rgba(155,107,255,0.5); }
+
+.cell.X { background-image: url("https://i.pinimg.com/736x/ee/ca/58/eeca587ace5b298ba728feeebaed66e7.jpg"); background-size: cover; }
+.cell.O { background-image: url("https://i.pinimg.com/736x/cf/5e/ac/cf5eacfd958b0f95676d4c889f538bd7.jpg"); background-size: cover; }
+
+/* Sidebar */
+.sidebar {
+  padding: 14px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.status {
+  padding: 10px;
+  background: linear-gradient(90deg, rgba(155,107,255,0.15), rgba(63,224,255,0.15));
+  border-radius: 12px;
+}
+
+.buttons { display: flex; gap: 10px; flex-wrap: wrap; }
+
+button {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-primary { background: linear-gradient(90deg, var(--accent), var(--accent2)); color: #06060a; }
+.btn-ghost { background: transparent; border: 1px solid rgba(255,255,255,0.2); color: #fff; }
+
+/* 📱 MODO MÓVIL */
+@media (max-width: 900px) {
+  .card {
+    grid-template-columns: 1fr;
   }
-  .board{
-    width:90vw;
-    height:90vw;
+  .board {
+    width: 90vw;
+    height: 90vw;
+  }
+  .logo img {
+    max-width: 200px;
   }
 }
 
-/* ----- Tablero ----- */
-.board{
-  width:340px;
-  height:340px;
-  display:grid;
-  gap:10px;
-  grid-template-columns:repeat(3,1fr);
-}
-.cell{
-  background:rgba(255,255,255,0.07);
-  border-radius:10px;
-  cursor:pointer;
-}
-
-/* X y O como imágenes */
-.cell.X{ background-image:url("https://i.pinimg.com/736x/ee/ca/58/eeca587ace5b298ba728feeebaed66e7.jpg"); background-size:cover; }
-.cell.O{ background-image:url("https://i.pinimg.com/736x/cf/5e/ac/cf5eacfd958b0f95676d4c889f538bd7.jpg"); background-size:cover; }
-
-.sidebar button, select, .btn-primary{
-  padding:8px 10px;
-  border-radius:10px;
-  border:0;
-}
-.btn-primary{
-  background:linear-gradient(90deg,var(--accent),var(--accent2));
-  color:black;
-}
-.btn-ghost{
-  background:transparent;
-  border:1px solid rgba(255,255,255,0.3);
-  color:white;
+/* Pantalla chica extra */
+@media (max-width: 480px) {
+  .logo img {
+    max-width: 160px;
+  }
 }
