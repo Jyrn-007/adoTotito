@@ -137,26 +137,39 @@ button { padding:10px 12px; border-radius:10px; border:0; cursor:pointer; font-w
 
 @media (max-width: 720px) {
 
-  /* ... tu código existente ... */
+  .card {
+    grid-template-columns: 1fr; /* Se vuelve 1 columna */
+    gap: 18px;
+    padding: 18px;
+    margin-top: 10px;
+  }
 
-  .logo {
-    margin-top: 14px;  /* baja el logo */
-    margin-bottom: -4px;
-    display: flex;
-    justify-content: center;
+  .logo img {
+    width: 48px;
+  }
+
+  .board {
+    max-width: 500px; /* aumenta tamaño tablero en PC */
+    margin: 0 auto;   /* centra el tablero */
+  }
+  
+
+  .sidebar {
+    width: 100%;
+    order: 3;
+  }
+
+  .play-area {
+    width: 100%;
+    order: 2;
   }
 
   .header {
-    margin-top: 6px; /* evita que el título se pegue al borde */
+    order: 1;
+    text-align: center;
+    padding-bottom: 10px;
   }
-
-  body {
-    align-items: flex-start; /* deja de centrar verticalmente en móvil */
-    padding-top: 18px;  /* añade espacio arriba */
-  }
-
 }
-
 
 
 @media (max-width: 420px) {
