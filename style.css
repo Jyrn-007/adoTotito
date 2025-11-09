@@ -1,0 +1,154 @@
+
+:root{
+    --bg1:#0b0b12;
+    --bg2:#3b0066;
+    --glass: rgba(255,255,255,0.06);
+    --accent:#9b6bff;
+    --accent2:#3fe0ff;
+    --x-color:#ff6b6b;
+    --o-color:#6bd1ff;
+    --soft: 14px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+  
+  /* Nuevo fondo ADO */
+  background:
+  linear-gradient(rgba(10,0,25,0.55), rgba(5,0,15,0.75)),
+  url("https://billboardphilippines.com/wp-content/uploads/2024/10/ADO-FTR-IMG-1600x838.jpg");
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  color:#fff;
+  
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+  
+  /* Suaviza todo ➜ estética dream pop */
+  backdrop-filter: blur(2px);
+  }
+  .card{
+  width:min(760px,95%);
+  background:rgba(255,255,255,0.06);
+  border-radius:22px;
+  padding:24px;
+  box-shadow:
+  0 0 40px rgba(155,107,255,0.25),
+  0 0 120px rgba(63,224,255,0.15),
+  0 10px 40px rgba(0,0,0,0.75);
+  backdrop-filter: blur(14px) saturate(160%);
+  border:1px solid rgba(255,255,255,0.12);
+  
+  display:grid;
+  grid-template-columns:1fr 340px;
+  gap:22px;
+  
+  /* Animación suave al aparecer */
+  animation: fadeIn .8s ease;
+  }
+  
+  @keyframes fadeIn {
+  from { opacity:0; transform:scale(.96); }
+  to { opacity:1; transform:scale(1); }
+  }
+  
+  .header{
+    grid-column:1/-1;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:4px;
+  }
+  .logo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  }
+  
+  .logo img {
+  width: 120px; /* Ajusta el tamaño si quieres */
+  height: auto;
+  border-radius: 14px;
+  box-shadow: 0 0 25px rgba(150, 90, 255, 0.55);
+  transition: transform .3s, box-shadow .4s;
+  }
+  
+  .logo img:hover {
+  transform: scale(1.07);
+  box-shadow: 0 0 40px rgba(190, 120, 255, 0.85);
+  }
+  
+  h1{margin:0;font-size:20px}
+  p.lead{margin:0;opacity:0.9;font-size:13px}
+  
+  /* Board area */
+  .play-area{display:flex;flex-direction:column;gap:14px;align-items:center;padding:8px}
+  .board{
+    width:340px;height:340px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+    border-radius:12px;padding:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px;align-items:stretch;justify-items:stretch;
+  }
+  .cell {
+  background: var(--glass);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: transform .12s ease, background-color .12s ease, box-shadow .12s ease, color .12s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.45), 0 1px 0 rgba(255,255,255,0.01) inset;
+  background-size: cover;
+  background-position: center;
+  }
+  
+  /* Jugador 1 (X) */
+  .cell.X {
+  background-image: url("https://i.pinimg.com/736x/ee/ca/58/eeca587ace5b298ba728feeebaed66e7.jpg");
+  }
+  .cell:hover{
+  transform: scale(1.06);
+  box-shadow:0 0 18px rgba(155,107,255,0.4);
+  }
+  
+  #difficulty {
+  background: rgba(40, 0, 65, 0.45);
+  border: 1px solid rgba(200, 130, 255, 0.55);
+  color: #f5daff;
+  backdrop-filter: blur(6px);
+  border-radius: 10px;
+  }
+  
+  #difficulty option {
+  background-color: rgba(30, 0, 55, 0.95);
+  color: #fff;
+  }
+  
+  /* Jugador 2 (O) */
+  .cell.O {
+  background-image: url("https://i.pinimg.com/736x/cf/5e/ac/cf5eacfd958b0f95676d4c889f538bd7.jpg");
+  }
+  
+  
+  /* sidebar */
+  .sidebar{padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));border-radius:12px;display:flex;flex-direction:column;gap:12px}
+  .status{padding:10px;border-radius:10px;background:linear-gradient(90deg, rgba(155,107,255,0.06), rgba(63,224,255,0.03));}
+  .buttons{display:flex;gap:10px;flex-wrap:wrap}
+  button{padding:10px 12px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
+  .btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#06060a}
+  .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff}
+  
+  .credits{font-size:12px;opacity:0.75}
+  
+  /* Win line animation */
+  .line{position:absolute;height:6px;background:linear-gradient(90deg,var(--accent),var(--accent2));box-shadow:0 8px 20px rgba(155,107,255,0.12);border-radius:6px;transform-origin:center;z-index:50;}
+  
+  /* responsive */
+  @media (max-width:900px){
+    .card{grid-template-columns:1fr;}
+    .board{width:92vw;height:92vw}
+  }
+    

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Totito - ADO Theme</title>
+  <link rel="stylesheet" href="/style.css">
+
+</head>
+<body>
+  <div class="card">
+    <div class="header">
+        <div class="logo">
+            <img src="https://preview.redd.it/who-and-what-is-ado-v0-kve8mhe2j7ee1.jpeg?width=735&auto=webp&s=faf454230620917a2aff0e0e11642b846ad1343a" alt="ADO Logo">
+          </div>
+          <div>
+        <h1>Totito — Tema ADO (Cósmico)</h1>
+      </div>
+    </div>
+
+    <div class="play-area">
+      <div id="board" class="board" aria-label="Tablero de Totito"></div>
+      <div style="display:flex;gap:12px;align-items:center;">
+        <div class="status" id="status">Turno: <strong id="turn">X</strong></div>
+        <button class="btn-primary" id="reset">Reiniciar</button>
+        <button class="btn-ghost" id="swap" style="display:none;">Cambiar Jugador</button>
+      </div>
+    </div>
+
+    <aside class="sidebar">
+      <div class="status">
+        <div>Jugador x: <span id="scoreX">0</span></div>
+        <div>Jugador O: <span id="scoreO">0</span></div>
+        <div>Empates: <span id="scoreD">0</span></div>
+      </div>
+      <div class="buttons">
+        <button id="soundToggle" class="btn-ghost">Sonido: ON</button>
+        <button id="modeAI" class="btn-ghost">Modo AI: ON</button>
+          
+      </div>
+      
+      <label style="font-size:13px;opacity:.85;margin-top:4px;">Dificultad IA:</label>
+      <select id="difficulty" style="padding:8px;border-radius:10px;background:transparent;border:1px solid rgba(255,255,255,0.15);color:white;">
+        <option value="easy">Fácil</option>
+        <option value="medium">Intermedio</option>
+        <option value="hard" selected>Difícil</option>
+      </select>
+      
+      <div class="credits">Diseño inspirado en ADO. El segundo jugador es la CPU (IA perfecta).</div>
+    </aside>
+  </div>
+
+  <script src="/game.js"></script>
+</body>
+</html>
